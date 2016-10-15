@@ -6,17 +6,17 @@ A paranoid Sith demands to know when someone changes the security permissions on
 
 ### Warning
 
-You are more foolish than a gang of Sand People making fun of Anakin's robes if you do this in production without SERIOUS though
+You are more foolish than a gang of Sand People making fun of Anakin's robes if you do this in production without SERIOUS thought
 
 * You will need to figure how HOW to login as the admin PostgreSQL user for Tableau Server. I won't tell you how
-* Using this technique is completely unsupported, and hacking the Tableau Repository puts you outside of support. The force must be strong in you to handle all eventualities of your meddling *on your own*.
+* Using this technique is completely unsupported, and hacking the Tableau Repository puts you outside of support. The force must be strong in you to handle all eventualities of your meddling **on your own**.
 * Mis-use of the trigger could actually PREVENT you from being able to change permissions on Tableau objects
 * Storing the "saved" permissions inside Tableau's PostgreSQL might break Tableau's ability to backup the Server with tabadmin
 * If you use this script, Donald Trump might get elected President. Us Sith would get a laugh out of that, but whatever
 
 ### Installation
 
-1. Backup your Tableau Server, for God's sake!
+1. Backup your Tableau Server, for God's sake! If you hose your server, do a COMPLETE uninstall (including ProgramData), re-install Tableau Server, and restore your backup. I'm **not kidding**
 2. Create a database named "audit" or somesuch on a **remote* PostgreSQL instance or cluster
 3. Run the contents of **remote auditing database.sql** inside that database to create a table to store before/after security results
 4. Login to Tableau's PostgreSQL instance as tblwgadmin (the admin user).
