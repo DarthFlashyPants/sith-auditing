@@ -1,0 +1,3249 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 10000.16.0917.1429                               -->
+<workbook source-build='10.0.1 (10000.16.0917.1429)' source-platform='win' version='10.0' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource inline='true' name='Auditing is quite exciting (copy)' version='10.0'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='10.0.0.93' name='postgres.1mqgcbm0af3gnb13tme8t000mat3 (copy)'>
+            <connection authentication='username-password' class='postgres' dbname='audit' odbc-native-protocol='yes' port='5432' server='10.0.0.93' username='dfp' />
+          </named-connection>
+          <named-connection caption='darth-server' name='postgres.00vu8dp1bveygc1abjn1s1h0x10t (copy)'>
+            <connection authentication='username-password' class='postgres' dbname='workgroup' odbc-native-protocol='yes' port='8060' server='darth-server' username='tblwgadmin' />
+          </named-connection>
+        </named-connections>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[next_gen_permissions_change].[grantee_id]' />
+              <expression op='[_groups].[id]' />
+            </expression>
+          </clause>
+          <relation join='left' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[next_gen_permissions_change].[authorizable_id]' />
+                <expression op='[_projects].[id]' />
+              </expression>
+            </clause>
+            <relation join='left' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[next_gen_permissions_change].[grantee_id]' />
+                  <expression op='[system_users].[id]' />
+                </expression>
+              </clause>
+              <relation join='left' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[next_gen_permissions_change].[capability_id]' />
+                    <expression op='[capabilities].[id]' />
+                  </expression>
+                </clause>
+                <relation join='left' type='join'>
+                  <clause type='join'>
+                    <expression op='='>
+                      <expression op='[next_gen_permissions_change].[authorizable_id]' />
+                      <expression op='[_datasources].[id]' />
+                    </expression>
+                  </clause>
+                  <relation join='left' type='join'>
+                    <clause type='join'>
+                      <expression op='='>
+                        <expression op='[next_gen_permissions_change].[authorizable_id]' />
+                        <expression op='[_workbooks].[id]' />
+                      </expression>
+                    </clause>
+                    <relation connection='postgres.1mqgcbm0af3gnb13tme8t000mat3 (copy)' name='next_gen_permissions_change' table='[public].[next_gen_permissions_change]' type='table' />
+                    <relation connection='postgres.00vu8dp1bveygc1abjn1s1h0x10t (copy)' name='_workbooks' table='[public].[_workbooks]' type='table' />
+                  </relation>
+                  <relation connection='postgres.00vu8dp1bveygc1abjn1s1h0x10t (copy)' name='_datasources' table='[public].[_datasources]' type='table' />
+                </relation>
+                <relation connection='postgres.00vu8dp1bveygc1abjn1s1h0x10t (copy)' name='capabilities' table='[public].[capabilities]' type='table' />
+              </relation>
+              <relation connection='postgres.00vu8dp1bveygc1abjn1s1h0x10t (copy)' name='system_users' table='[public].[system_users]' type='table' />
+            </relation>
+            <relation connection='postgres.00vu8dp1bveygc1abjn1s1h0x10t (copy)' name='_projects' table='[public].[_projects]' type='table' />
+          </relation>
+          <relation connection='postgres.00vu8dp1bveygc1abjn1s1h0x10t (copy)' name='_groups' table='[public].[_groups]' type='table' />
+        </relation>
+        <cols>
+          <map key='[activated_at]' value='[system_users].[activated_at]' />
+          <map key='[activation_code]' value='[system_users].[activation_code]' />
+          <map key='[admin_level]' value='[system_users].[admin_level]' />
+          <map key='[asset_key_id]' value='[system_users].[asset_key_id]' />
+          <map key='[auth_user_id]' value='[system_users].[auth_user_id]' />
+          <map key='[authorizable_id]' value='[next_gen_permissions_change].[authorizable_id]' />
+          <map key='[authorizable_type]' value='[next_gen_permissions_change].[authorizable_type]' />
+          <map key='[capability_id]' value='[next_gen_permissions_change].[capability_id]' />
+          <map key='[created_at (_datasources)]' value='[_datasources].[created_at]' />
+          <map key='[created_at (_projects)]' value='[_projects].[created_at]' />
+          <map key='[created_at (system_users)]' value='[system_users].[created_at]' />
+          <map key='[created_at]' value='[_workbooks].[created_at]' />
+          <map key='[custom_display_name]' value='[system_users].[custom_display_name]' />
+          <map key='[datasource_url]' value='[_datasources].[datasource_url]' />
+          <map key='[dbclass]' value='[_datasources].[dbclass]' />
+          <map key='[dbname]' value='[_datasources].[dbname]' />
+          <map key='[deleted_at]' value='[system_users].[deleted_at]' />
+          <map key='[display_name]' value='[capabilities].[display_name]' />
+          <map key='[display_order]' value='[capabilities].[display_order]' />
+          <map key='[domain_family]' value='[_groups].[domain_family]' />
+          <map key='[domain_id (_datasources)]' value='[_datasources].[domain_id]' />
+          <map key='[domain_id (system_users)]' value='[system_users].[domain_id]' />
+          <map key='[domain_id]' value='[_workbooks].[domain_id]' />
+          <map key='[domain_name (_datasources)]' value='[_datasources].[domain_name]' />
+          <map key='[domain_name (_groups)]' value='[_groups].[domain_name]' />
+          <map key='[domain_name]' value='[_workbooks].[domain_name]' />
+          <map key='[domain_short_name]' value='[_groups].[domain_short_name]' />
+          <map key='[email]' value='[system_users].[email]' />
+          <map key='[event_time]' value='[next_gen_permissions_change].[event_time]' />
+          <map key='[event_type]' value='[next_gen_permissions_change].[event_type]' />
+          <map key='[friendly_name]' value='[system_users].[friendly_name]' />
+          <map key='[grantee_id]' value='[next_gen_permissions_change].[grantee_id]' />
+          <map key='[grantee_type]' value='[next_gen_permissions_change].[grantee_type]' />
+          <map key='[hashed_password]' value='[system_users].[hashed_password]' />
+          <map key='[id (_datasources)]' value='[_datasources].[id]' />
+          <map key='[id (_groups)]' value='[_groups].[id]' />
+          <map key='[id (_projects)]' value='[_projects].[id]' />
+          <map key='[id (_workbooks)]' value='[_workbooks].[id]' />
+          <map key='[id (capabilities)]' value='[capabilities].[id]' />
+          <map key='[id (system_users)]' value='[system_users].[id]' />
+          <map key='[id]' value='[next_gen_permissions_change].[id]' />
+          <map key='[keychain]' value='[system_users].[keychain]' />
+          <map key='[lock_version]' value='[system_users].[lock_version]' />
+          <map key='[name (_datasources)]' value='[_datasources].[name]' />
+          <map key='[name (_groups)]' value='[_groups].[name]' />
+          <map key='[name (_projects)]' value='[_projects].[name]' />
+          <map key='[name (capabilities)]' value='[capabilities].[name]' />
+          <map key='[name (system_users)]' value='[system_users].[name]' />
+          <map key='[name]' value='[_workbooks].[name]' />
+          <map key='[owner_id (_datasources)]' value='[_datasources].[owner_id]' />
+          <map key='[owner_id (_projects)]' value='[_projects].[owner_id]' />
+          <map key='[owner_id]' value='[_workbooks].[owner_id]' />
+          <map key='[owner_name (_datasources)]' value='[_datasources].[owner_name]' />
+          <map key='[owner_name (_projects)]' value='[_projects].[owner_name]' />
+          <map key='[owner_name]' value='[_workbooks].[owner_name]' />
+          <map key='[owner_type]' value='[_datasources].[owner_type]' />
+          <map key='[permission]' value='[next_gen_permissions_change].[permission]' />
+          <map key='[port]' value='[_datasources].[port]' />
+          <map key='[project_id (_datasources)]' value='[_datasources].[project_id]' />
+          <map key='[project_id]' value='[_workbooks].[project_id]' />
+          <map key='[project_name (_datasources)]' value='[_datasources].[project_name]' />
+          <map key='[project_name]' value='[_workbooks].[project_name]' />
+          <map key='[salt]' value='[system_users].[salt]' />
+          <map key='[server]' value='[_datasources].[server]' />
+          <map key='[site_id (_datasources)]' value='[_datasources].[site_id]' />
+          <map key='[site_id (_projects)]' value='[_projects].[site_id]' />
+          <map key='[site_id]' value='[_workbooks].[site_id]' />
+          <map key='[site_name]' value='[_groups].[site_name]' />
+          <map key='[size (_datasources)]' value='[_datasources].[size]' />
+          <map key='[size]' value='[_workbooks].[size]' />
+          <map key='[state]' value='[system_users].[state]' />
+          <map key='[sys]' value='[system_users].[sys]' />
+          <map key='[system_user_id (_datasources)]' value='[_datasources].[system_user_id]' />
+          <map key='[system_user_id (_projects)]' value='[_projects].[system_user_id]' />
+          <map key='[system_user_id]' value='[_workbooks].[system_user_id]' />
+          <map key='[updated_at (_datasources)]' value='[_datasources].[updated_at]' />
+          <map key='[updated_at (system_users)]' value='[system_users].[updated_at]' />
+          <map key='[updated_at]' value='[_workbooks].[updated_at]' />
+          <map key='[username]' value='[_datasources].[username]' />
+          <map key='[view_count]' value='[_workbooks].[view_count]' />
+          <map key='[workbook_url]' value='[_workbooks].[workbook_url]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>authorizable_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[authorizable_type]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>authorizable_type</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>64</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>authorizable_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[authorizable_id]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>authorizable_id</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>grantee_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[grantee_id]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>grantee_id</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>grantee_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[grantee_type]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>grantee_type</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>capability_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[capability_id]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>capability_id</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>permission</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[permission]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>permission</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>event_time</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[event_time]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>event_time</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>event_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[event_type]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>event_type</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>10</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (_workbooks)]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>workbook_url</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[workbook_url]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>workbook_url</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>8190</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>updated_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[updated_at]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>updated_at</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[owner_id]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>owner_id</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>project_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[project_id]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>project_id</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>size</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[size]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>size</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>view_count</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[view_count]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>view_count</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[owner_name]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>owner_name</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>project_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[project_name]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>project_name</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>system_user_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[system_user_id]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>system_user_id</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>site_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[site_id]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>site_id</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[domain_id]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>domain_id</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[domain_name]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>domain_name</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>datasource_url</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[datasource_url]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>datasource_url</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>8190</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[owner_id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>owner_id</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[owner_name (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>owner_name</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>updated_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[updated_at (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>updated_at</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>size</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[size (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>size</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>project_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[project_id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>project_id</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>project_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[project_name (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>project_name</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>server</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[server]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>server</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>8190</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dbclass</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[dbclass]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>dbclass</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>128</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>port</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[port]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>port</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>username</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[username]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>username</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>128</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dbname</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[dbname]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>dbname</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[owner_type]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>owner_type</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>system_user_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[system_user_id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>system_user_id</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>site_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[site_id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>site_id</remote-alias>
+            <ordinal>44</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[domain_id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>domain_id</remote-alias>
+            <ordinal>45</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[domain_name (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>domain_name</remote-alias>
+            <ordinal>46</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (capabilities)]</local-name>
+            <parent-name>[capabilities]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>48</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name (capabilities)]</local-name>
+            <parent-name>[capabilities]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>49</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>80</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>display_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[display_name]</local-name>
+            <parent-name>[capabilities]</parent-name>
+            <remote-alias>display_name</remote-alias>
+            <ordinal>50</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>display_order</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[display_order]</local-name>
+            <parent-name>[capabilities]</parent-name>
+            <remote-alias>display_order</remote-alias>
+            <ordinal>51</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (system_users)]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>53</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name (system_users)]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>54</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>email</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[email]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>email</remote-alias>
+            <ordinal>55</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hashed_password</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[hashed_password]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>hashed_password</remote-alias>
+            <ordinal>56</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>salt</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[salt]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>salt</remote-alias>
+            <ordinal>57</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sys</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[sys]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>sys</remote-alias>
+            <ordinal>58</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_BIT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>keychain</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[keychain]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>keychain</remote-alias>
+            <ordinal>59</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>8190</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[domain_id (system_users)]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>domain_id</remote-alias>
+            <ordinal>60</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>friendly_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[friendly_name]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>friendly_name</remote-alias>
+            <ordinal>61</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>custom_display_name</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[custom_display_name]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>custom_display_name</remote-alias>
+            <ordinal>62</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_BIT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>activation_code</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[activation_code]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>activation_code</remote-alias>
+            <ordinal>63</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>activated_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[activated_at]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>activated_at</remote-alias>
+            <ordinal>64</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>state</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[state]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>state</remote-alias>
+            <ordinal>65</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>admin_level</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[admin_level]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>admin_level</remote-alias>
+            <ordinal>66</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at (system_users)]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>67</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>updated_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[updated_at (system_users)]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>updated_at</remote-alias>
+            <ordinal>68</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>deleted_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[deleted_at]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>deleted_at</remote-alias>
+            <ordinal>69</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>auth_user_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[auth_user_id]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>auth_user_id</remote-alias>
+            <ordinal>70</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>asset_key_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[asset_key_id]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>asset_key_id</remote-alias>
+            <ordinal>71</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lock_version</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[lock_version]</local-name>
+            <parent-name>[system_users]</parent-name>
+            <remote-alias>lock_version</remote-alias>
+            <ordinal>72</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (_projects)]</local-name>
+            <parent-name>[_projects]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>74</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name (_projects)]</local-name>
+            <parent-name>[_projects]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>75</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at (_projects)]</local-name>
+            <parent-name>[_projects]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>76</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[owner_id (_projects)]</local-name>
+            <parent-name>[_projects]</parent-name>
+            <remote-alias>owner_id</remote-alias>
+            <ordinal>77</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[owner_name (_projects)]</local-name>
+            <parent-name>[_projects]</parent-name>
+            <remote-alias>owner_name</remote-alias>
+            <ordinal>78</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>system_user_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[system_user_id (_projects)]</local-name>
+            <parent-name>[_projects]</parent-name>
+            <remote-alias>system_user_id</remote-alias>
+            <ordinal>79</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>site_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[site_id (_projects)]</local-name>
+            <parent-name>[_projects]</parent-name>
+            <remote-alias>site_id</remote-alias>
+            <ordinal>80</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (_groups)]</local-name>
+            <parent-name>[_groups]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>82</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name (_groups)]</local-name>
+            <parent-name>[_groups]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>83</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>site_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[site_name]</local-name>
+            <parent-name>[_groups]</parent-name>
+            <remote-alias>site_name</remote-alias>
+            <ordinal>84</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[domain_name (_groups)]</local-name>
+            <parent-name>[_groups]</parent-name>
+            <remote-alias>domain_name</remote-alias>
+            <ordinal>85</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_short_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[domain_short_name]</local-name>
+            <parent-name>[_groups]</parent-name>
+            <remote-alias>domain_short_name</remote-alias>
+            <ordinal>86</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>80</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_family</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[domain_family]</local-name>
+            <parent-name>[_groups]</parent-name>
+            <remote-alias>domain_family</remote-alias>
+            <ordinal>87</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Object Name' datatype='string' name='[Calculation_259238518193442816]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='If [authorizable_type] = &apos;Datasource&apos; Then&#13;&#10;    [name (_datasources)]&#13;&#10;ELSEIF [authorizable_type] = &apos;Workbook&apos; Then &#13;&#10;    [name]&#13;&#10;ELSEIF [authorizable_type] = &apos;Project&apos; Then&#13;&#10;    [name (_projects)]&#13;&#10;End' />
+      </column>
+      <column caption='User or Group' datatype='string' name='[Calculation_302022718176387072]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='If [grantee_type] = &quot;User&quot; Then &#13;&#10;    [friendly_name]&#13;&#10;elseif [grantee_type] = &quot;Group&quot; Then&#13;&#10;    [name (_groups)]&#13;&#10;End' />
+      </column>
+      <column datatype='string' name='[Display Name (copy)]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[display_name]' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Activated At' datatype='datetime' name='[activated_at]' role='dimension' type='ordinal' />
+      <column caption='Activation Code' datatype='string' name='[activation_code]' role='dimension' type='nominal' />
+      <column caption='Admin Level' datatype='integer' name='[admin_level]' role='measure' type='quantitative' />
+      <column caption='Asset Key Id' datatype='integer' name='[asset_key_id]' role='dimension' type='ordinal' />
+      <column caption='Auth User Id' datatype='string' name='[auth_user_id]' role='dimension' type='nominal' />
+      <column caption='Authorizable Id' datatype='integer' name='[authorizable_id]' role='dimension' type='ordinal' />
+      <column caption='Authorizable Type' datatype='string' name='[authorizable_type]' role='dimension' type='nominal' />
+      <column caption='Capability Id' datatype='integer' name='[capability_id]' role='dimension' type='ordinal' />
+      <column caption='Created At ( Datasources)' datatype='datetime' name='[created_at (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Created At ( Projects)' datatype='datetime' name='[created_at (_projects)]' role='dimension' type='ordinal' />
+      <column caption='Created At (System Users)' datatype='datetime' name='[created_at (system_users)]' role='dimension' type='ordinal' />
+      <column caption='Created At' datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+      <column caption='Custom Display Name' datatype='boolean' name='[custom_display_name]' role='dimension' type='nominal' />
+      <column caption='Datasource Url' datatype='string' name='[datasource_url]' role='dimension' type='nominal' />
+      <column caption='Dbclass' datatype='string' name='[dbclass]' role='dimension' type='nominal' />
+      <column caption='Dbname' datatype='string' name='[dbname]' role='dimension' type='nominal' />
+      <column caption='Deleted At' datatype='datetime' name='[deleted_at]' role='dimension' type='ordinal' />
+      <column caption='Capability' datatype='string' name='[display_name]' role='dimension' type='nominal' />
+      <column caption='Display Order' datatype='integer' name='[display_order]' role='measure' type='quantitative' />
+      <column caption='Domain Family' datatype='string' name='[domain_family]' role='dimension' type='nominal' />
+      <column caption='Domain Id ( Datasources)' datatype='integer' name='[domain_id (_datasources)]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' caption='Domain Id (System Users)' datatype='integer' name='[domain_id (system_users)]' role='dimension' type='ordinal' />
+      <column caption='Domain Id' datatype='integer' name='[domain_id]' role='dimension' type='ordinal' />
+      <column caption='Domain Name ( Datasources)' datatype='string' name='[domain_name (_datasources)]' role='dimension' type='nominal' />
+      <column caption='Domain Name ( Groups)' datatype='string' name='[domain_name (_groups)]' role='dimension' type='nominal' />
+      <column caption='Domain Name' datatype='string' name='[domain_name]' role='dimension' type='nominal' />
+      <column caption='Domain Short Name' datatype='string' name='[domain_short_name]' role='dimension' type='nominal' />
+      <column caption='Email' datatype='string' name='[email]' role='dimension' type='nominal' />
+      <column caption='Event Time' datatype='datetime' name='[event_time]' role='dimension' type='ordinal' />
+      <column caption='Event Type' datatype='string' name='[event_type]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;delete&quot;' value='Delete' />
+        </aliases>
+      </column>
+      <column caption='Friendly Name' datatype='string' name='[friendly_name]' role='dimension' type='nominal' />
+      <column caption='Grantee Id' datatype='integer' name='[grantee_id]' role='dimension' type='ordinal' />
+      <column caption='Grantee Type' datatype='string' name='[grantee_type]' role='dimension' type='nominal' />
+      <column caption='Hashed Password' datatype='string' name='[hashed_password]' role='dimension' type='nominal' />
+      <column caption='Id ( Datasources)' datatype='integer' name='[id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Id ( Groups)' datatype='integer' name='[id (_groups)]' role='dimension' type='ordinal' />
+      <column caption='Id ( Projects)' datatype='integer' name='[id (_projects)]' role='dimension' type='ordinal' />
+      <column caption='Id ( Workbooks)' datatype='integer' name='[id (_workbooks)]' role='dimension' type='ordinal' />
+      <column caption='Id (Capabilities)' datatype='integer' name='[id (capabilities)]' role='dimension' type='ordinal' />
+      <column caption='Id (System Users)' datatype='integer' name='[id (system_users)]' role='dimension' type='ordinal' />
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Keychain' datatype='string' name='[keychain]' role='dimension' type='nominal' />
+      <column caption='Lock Version' datatype='integer' name='[lock_version]' role='measure' type='quantitative' />
+      <column caption='Name ( Datasources)' datatype='string' name='[name (_datasources)]' role='dimension' type='nominal' />
+      <column caption='Name ( Groups)' datatype='string' name='[name (_groups)]' role='dimension' type='nominal' />
+      <column caption='Name ( Projects)' datatype='string' name='[name (_projects)]' role='dimension' type='nominal' />
+      <column caption='Name (Capabilities)' datatype='string' name='[name (capabilities)]' role='dimension' type='nominal' />
+      <column caption='Name (System Users)' datatype='string' name='[name (system_users)]' role='dimension' type='nominal' />
+      <column caption='Name' datatype='string' name='[name]' role='dimension' type='nominal' />
+      <column caption='Owner Id ( Datasources)' datatype='integer' name='[owner_id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Owner Id ( Projects)' datatype='integer' name='[owner_id (_projects)]' role='dimension' type='ordinal' />
+      <column caption='Owner Id' datatype='integer' name='[owner_id]' role='dimension' type='ordinal' />
+      <column caption='Owner Name ( Datasources)' datatype='string' name='[owner_name (_datasources)]' role='dimension' type='nominal' />
+      <column caption='Owner Name ( Projects)' datatype='string' name='[owner_name (_projects)]' role='dimension' type='nominal' />
+      <column caption='Owner Name' datatype='string' name='[owner_name]' role='dimension' type='nominal' />
+      <column caption='Owner Type' datatype='string' name='[owner_type]' role='dimension' type='nominal' />
+      <column aggregation='Sum' caption='Permission' datatype='integer' name='[permission]' role='dimension' type='ordinal'>
+        <aliases>
+          <alias key='1' value='Grant (Group)' />
+          <alias key='3' value='Grant (User)' />
+          <alias key='4' value='Deny (User)' />
+        </aliases>
+      </column>
+      <column caption='Port' datatype='integer' name='[port]' role='measure' type='quantitative' />
+      <column caption='Project Id ( Datasources)' datatype='integer' name='[project_id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Project Id' datatype='integer' name='[project_id]' role='dimension' type='ordinal' />
+      <column caption='Project Name ( Datasources)' datatype='string' name='[project_name (_datasources)]' role='dimension' type='nominal' />
+      <column caption='Project Name' datatype='string' name='[project_name]' role='dimension' type='nominal' />
+      <column caption='Salt' datatype='string' name='[salt]' role='dimension' type='nominal' />
+      <column caption='Server' datatype='string' name='[server]' role='dimension' type='nominal' />
+      <column caption='Site Id ( Datasources)' datatype='integer' name='[site_id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Site Id ( Projects)' datatype='integer' name='[site_id (_projects)]' role='dimension' type='ordinal' />
+      <column caption='Site Id' datatype='integer' name='[site_id]' role='dimension' type='ordinal' />
+      <column caption='Site Name' datatype='string' name='[site_name]' role='dimension' type='nominal' />
+      <column caption='Size ( Datasources)' datatype='integer' name='[size (_datasources)]' role='measure' type='quantitative' />
+      <column caption='Size' datatype='integer' name='[size]' role='measure' type='quantitative' />
+      <column caption='State' datatype='string' name='[state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='Sys' datatype='boolean' name='[sys]' role='dimension' type='nominal' />
+      <column caption='System User Id ( Datasources)' datatype='integer' name='[system_user_id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='System User Id ( Projects)' datatype='integer' name='[system_user_id (_projects)]' role='dimension' type='ordinal' />
+      <column caption='System User Id' datatype='integer' name='[system_user_id]' role='dimension' type='ordinal' />
+      <column caption='Updated At ( Datasources)' datatype='datetime' name='[updated_at (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Updated At (System Users)' datatype='datetime' name='[updated_at (system_users)]' role='dimension' type='ordinal' />
+      <column caption='Updated At' datatype='datetime' name='[updated_at]' role='dimension' type='ordinal' />
+      <column caption='Username' datatype='string' name='[username]' role='dimension' type='nominal' />
+      <column caption='View Count' datatype='integer' name='[view_count]' role='measure' type='quantitative' />
+      <column caption='Workbook Url' datatype='string' name='[workbook_url]' role='dimension' type='nominal' />
+      <column-instance column='[event_type]' derivation='None' name='[none:event_type:nk]' pivot='key' type='nominal' />
+      <column-instance column='[permission]' derivation='None' name='[none:permission:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[event_time]' derivation='Year' name='[yr:event_time:ok]' pivot='key' type='ordinal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.435976' measure-ordering='alphabetic' measure-percentage='0.564024' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:permission:ok]' type='palette'>
+            <map to='#59a14f'>
+              <bucket>1</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>3</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>4</bucket>
+            </map>
+          </encoding>
+          <encoding attr='shape' field='[none:event_type:nk]' type='shape'>
+            <map to='plus'>
+              <bucket>&quot;insert&quot;</bucket>
+            </map>
+            <map to='times'>
+              <bucket>&quot;delete&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <field-sort-info field-sort-order-type='alphabetical-order' />
+      <filter class='categorical' column='[yr:event_time:ok]' filter-group='2'>
+        <groupfilter expression='NOT isnull(Min([event_time]))' function='filter' user:ui-marker='filter-by'>
+          <groupfilter function='level-members' level='[yr:event_time:ok]' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
+        </groupfilter>
+      </filter>
+    </datasource>
+    <datasource caption='Auditing is quite exciting' inline='true' name='federated.1ey3fif0fbkq9715ttp060fhark5' version='10.0'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='10.0.0.93' name='postgres.1mqgcbm0af3gnb13tme8t000mat3'>
+            <connection authentication='username-password' class='postgres' dbname='audit' odbc-native-protocol='yes' port='5432' server='10.0.0.93' username='dfp' />
+          </named-connection>
+          <named-connection caption='darth-server' name='postgres.00vu8dp1bveygc1abjn1s1h0x10t'>
+            <connection authentication='username-password' class='postgres' dbname='workgroup' odbc-native-protocol='yes' port='8060' server='darth-server' username='tblwgadmin' />
+          </named-connection>
+        </named-connections>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[next_gen_permissions_change].[capability_id]' />
+              <expression op='[capabilities].[id]' />
+            </expression>
+          </clause>
+          <relation join='left' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[next_gen_permissions_change].[authorizable_id]' />
+                <expression op='[_datasources].[id]' />
+              </expression>
+            </clause>
+            <relation join='left' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[next_gen_permissions_change].[authorizable_id]' />
+                  <expression op='[_workbooks].[id]' />
+                </expression>
+              </clause>
+              <relation connection='postgres.1mqgcbm0af3gnb13tme8t000mat3' name='next_gen_permissions_change' table='[public].[next_gen_permissions_change]' type='table' />
+              <relation connection='postgres.00vu8dp1bveygc1abjn1s1h0x10t' name='_workbooks' table='[public].[_workbooks]' type='table' />
+            </relation>
+            <relation connection='postgres.00vu8dp1bveygc1abjn1s1h0x10t' name='_datasources' table='[public].[_datasources]' type='table' />
+          </relation>
+          <relation connection='postgres.00vu8dp1bveygc1abjn1s1h0x10t' name='capabilities' table='[public].[capabilities]' type='table' />
+        </relation>
+        <cols>
+          <map key='[authorizable_id]' value='[next_gen_permissions_change].[authorizable_id]' />
+          <map key='[authorizable_type]' value='[next_gen_permissions_change].[authorizable_type]' />
+          <map key='[capability_id]' value='[next_gen_permissions_change].[capability_id]' />
+          <map key='[created_at (_datasources)]' value='[_datasources].[created_at]' />
+          <map key='[created_at]' value='[_workbooks].[created_at]' />
+          <map key='[datasource_url]' value='[_datasources].[datasource_url]' />
+          <map key='[dbclass]' value='[_datasources].[dbclass]' />
+          <map key='[dbname]' value='[_datasources].[dbname]' />
+          <map key='[display_name]' value='[capabilities].[display_name]' />
+          <map key='[display_order]' value='[capabilities].[display_order]' />
+          <map key='[domain_id (_datasources)]' value='[_datasources].[domain_id]' />
+          <map key='[domain_id]' value='[_workbooks].[domain_id]' />
+          <map key='[domain_name (_datasources)]' value='[_datasources].[domain_name]' />
+          <map key='[domain_name]' value='[_workbooks].[domain_name]' />
+          <map key='[event_time]' value='[next_gen_permissions_change].[event_time]' />
+          <map key='[event_type]' value='[next_gen_permissions_change].[event_type]' />
+          <map key='[grantee_id]' value='[next_gen_permissions_change].[grantee_id]' />
+          <map key='[grantee_type]' value='[next_gen_permissions_change].[grantee_type]' />
+          <map key='[id (_datasources)]' value='[_datasources].[id]' />
+          <map key='[id (_workbooks)]' value='[_workbooks].[id]' />
+          <map key='[id (capabilities)]' value='[capabilities].[id]' />
+          <map key='[id]' value='[next_gen_permissions_change].[id]' />
+          <map key='[name (_datasources)]' value='[_datasources].[name]' />
+          <map key='[name (capabilities)]' value='[capabilities].[name]' />
+          <map key='[name]' value='[_workbooks].[name]' />
+          <map key='[owner_id (_datasources)]' value='[_datasources].[owner_id]' />
+          <map key='[owner_id]' value='[_workbooks].[owner_id]' />
+          <map key='[owner_name (_datasources)]' value='[_datasources].[owner_name]' />
+          <map key='[owner_name]' value='[_workbooks].[owner_name]' />
+          <map key='[owner_type]' value='[_datasources].[owner_type]' />
+          <map key='[permission]' value='[next_gen_permissions_change].[permission]' />
+          <map key='[port]' value='[_datasources].[port]' />
+          <map key='[project_id (_datasources)]' value='[_datasources].[project_id]' />
+          <map key='[project_id]' value='[_workbooks].[project_id]' />
+          <map key='[project_name (_datasources)]' value='[_datasources].[project_name]' />
+          <map key='[project_name]' value='[_workbooks].[project_name]' />
+          <map key='[server]' value='[_datasources].[server]' />
+          <map key='[site_id (_datasources)]' value='[_datasources].[site_id]' />
+          <map key='[site_id]' value='[_workbooks].[site_id]' />
+          <map key='[size (_datasources)]' value='[_datasources].[size]' />
+          <map key='[size]' value='[_workbooks].[size]' />
+          <map key='[system_user_id (_datasources)]' value='[_datasources].[system_user_id]' />
+          <map key='[system_user_id]' value='[_workbooks].[system_user_id]' />
+          <map key='[updated_at (_datasources)]' value='[_datasources].[updated_at]' />
+          <map key='[updated_at]' value='[_workbooks].[updated_at]' />
+          <map key='[username]' value='[_datasources].[username]' />
+          <map key='[view_count]' value='[_workbooks].[view_count]' />
+          <map key='[workbook_url]' value='[_workbooks].[workbook_url]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>authorizable_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[authorizable_type]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>authorizable_type</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>64</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>authorizable_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[authorizable_id]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>authorizable_id</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>grantee_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[grantee_id]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>grantee_id</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>grantee_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[grantee_type]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>grantee_type</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>capability_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[capability_id]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>capability_id</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>permission</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[permission]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>permission</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>event_time</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[event_time]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>event_time</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>false</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>event_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[event_type]</local-name>
+            <parent-name>[next_gen_permissions_change]</parent-name>
+            <remote-alias>event_type</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>10</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (_workbooks)]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>workbook_url</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[workbook_url]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>workbook_url</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>8190</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>updated_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[updated_at]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>updated_at</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[owner_id]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>owner_id</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>project_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[project_id]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>project_id</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>size</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[size]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>size</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>view_count</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[view_count]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>view_count</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[owner_name]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>owner_name</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>project_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[project_name]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>project_name</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>system_user_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[system_user_id]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>system_user_id</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>site_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[site_id]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>site_id</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[domain_id]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>domain_id</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[domain_name]</local-name>
+            <parent-name>[_workbooks]</parent-name>
+            <remote-alias>domain_name</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>datasource_url</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[datasource_url]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>datasource_url</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>8190</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[owner_id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>owner_id</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[owner_name (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>owner_name</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[created_at (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>created_at</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>updated_at</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[updated_at (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>updated_at</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_TYPE_TIMESTAMP&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_TYPE_TIMESTAMP&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>size</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[size (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>size</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>19</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_BIGINT&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SBIGINT&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>project_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[project_id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>project_id</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>project_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[project_name (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>project_name</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>server</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[server]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>server</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>8190</width>
+            <contains-null>true</contains-null>
+            <cast-to-local-type>true</cast-to-local-type>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WLONGVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dbclass</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[dbclass]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>dbclass</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>128</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>port</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[port]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>port</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>username</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[username]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>username</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>128</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dbname</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[dbname]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>dbname</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owner_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[owner_type]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>owner_type</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>system_user_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[system_user_id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>system_user_id</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>site_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[site_id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>site_id</remote-alias>
+            <ordinal>44</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[domain_id (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>domain_id</remote-alias>
+            <ordinal>45</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>domain_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[domain_name (_datasources)]</local-name>
+            <parent-name>[_datasources]</parent-name>
+            <remote-alias>domain_name</remote-alias>
+            <ordinal>46</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[id (capabilities)]</local-name>
+            <parent-name>[capabilities]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>48</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name (capabilities)]</local-name>
+            <parent-name>[capabilities]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>49</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>80</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>display_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[display_name]</local-name>
+            <parent-name>[capabilities]</parent-name>
+            <remote-alias>display_name</remote-alias>
+            <ordinal>50</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <width>255</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_WVARCHAR&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_WCHAR&quot;</attribute>
+              <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>display_order</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[display_order]</local-name>
+            <parent-name>[capabilities]</parent-name>
+            <remote-alias>display_order</remote-alias>
+            <ordinal>51</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>10</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;SQL_INTEGER&quot;</attribute>
+              <attribute datatype='string' name='DebugWireType'>&quot;SQL_C_SLONG&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Object Name' datatype='string' name='[Calculation_259238518193442816]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='If [authorizable_type] = &apos;Datasource&apos; Then&#13;&#10;    [name (_datasources)]&#13;&#10;ELSEIF [authorizable_type] = &apos;Workbook&apos; Then &#13;&#10;    [name]&#13;&#10;End' />
+      </column>
+      <column datatype='string' name='[Display Name (copy)]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[display_name]' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Authorizable Id' datatype='integer' name='[authorizable_id]' role='dimension' type='ordinal' />
+      <column caption='Authorizable Type' datatype='string' name='[authorizable_type]' role='dimension' type='nominal' />
+      <column caption='Capability Id' datatype='integer' name='[capability_id]' role='dimension' type='ordinal' />
+      <column caption='Created At ( Datasources)' datatype='datetime' name='[created_at (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Created At' datatype='datetime' name='[created_at]' role='dimension' type='ordinal' />
+      <column caption='Datasource Url' datatype='string' name='[datasource_url]' role='dimension' type='nominal' />
+      <column caption='Dbclass' datatype='string' name='[dbclass]' role='dimension' type='nominal' />
+      <column caption='Dbname' datatype='string' name='[dbname]' role='dimension' type='nominal' />
+      <column caption='Capability' datatype='string' name='[display_name]' role='dimension' type='nominal' />
+      <column caption='Display Order' datatype='integer' name='[display_order]' role='measure' type='quantitative' />
+      <column caption='Domain Id ( Datasources)' datatype='integer' name='[domain_id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Domain Id' datatype='integer' name='[domain_id]' role='dimension' type='ordinal' />
+      <column caption='Domain Name ( Datasources)' datatype='string' name='[domain_name (_datasources)]' role='dimension' type='nominal' />
+      <column caption='Domain Name' datatype='string' name='[domain_name]' role='dimension' type='nominal' />
+      <column caption='Event Time' datatype='datetime' name='[event_time]' role='dimension' type='ordinal' />
+      <column caption='Event Type' datatype='string' name='[event_type]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;delete&quot;' value='Delete' />
+        </aliases>
+      </column>
+      <column caption='Grantee Id' datatype='integer' name='[grantee_id]' role='dimension' type='ordinal' />
+      <column caption='Grantee Type' datatype='string' name='[grantee_type]' role='dimension' type='nominal' />
+      <column caption='Id ( Datasources)' datatype='integer' name='[id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Id ( Workbooks)' datatype='integer' name='[id (_workbooks)]' role='dimension' type='ordinal' />
+      <column caption='Id (Capabilities)' datatype='integer' name='[id (capabilities)]' role='dimension' type='ordinal' />
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Name ( Datasources)' datatype='string' name='[name (_datasources)]' role='dimension' type='nominal' />
+      <column caption='Name (Capabilities)' datatype='string' name='[name (capabilities)]' role='dimension' type='nominal' />
+      <column caption='Name' datatype='string' name='[name]' role='dimension' type='nominal' />
+      <column caption='Owner Id ( Datasources)' datatype='integer' name='[owner_id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Owner Id' datatype='integer' name='[owner_id]' role='dimension' type='ordinal' />
+      <column caption='Owner Name ( Datasources)' datatype='string' name='[owner_name (_datasources)]' role='dimension' type='nominal' />
+      <column caption='Owner Name' datatype='string' name='[owner_name]' role='dimension' type='nominal' />
+      <column caption='Owner Type' datatype='string' name='[owner_type]' role='dimension' type='nominal' />
+      <column aggregation='Sum' caption='Permission' datatype='integer' name='[permission]' role='dimension' type='ordinal'>
+        <aliases>
+          <alias key='1' value='Grant (Group)' />
+          <alias key='3' value='Grant (User)' />
+          <alias key='4' value='Deny (User)' />
+        </aliases>
+      </column>
+      <column caption='Port' datatype='integer' name='[port]' role='measure' type='quantitative' />
+      <column caption='Project Id ( Datasources)' datatype='integer' name='[project_id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Project Id' datatype='integer' name='[project_id]' role='dimension' type='ordinal' />
+      <column caption='Project Name ( Datasources)' datatype='string' name='[project_name (_datasources)]' role='dimension' type='nominal' />
+      <column caption='Project Name' datatype='string' name='[project_name]' role='dimension' type='nominal' />
+      <column caption='Server' datatype='string' name='[server]' role='dimension' type='nominal' />
+      <column caption='Site Id ( Datasources)' datatype='integer' name='[site_id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Site Id' datatype='integer' name='[site_id]' role='dimension' type='ordinal' />
+      <column caption='Size ( Datasources)' datatype='integer' name='[size (_datasources)]' role='measure' type='quantitative' />
+      <column caption='Size' datatype='integer' name='[size]' role='measure' type='quantitative' />
+      <column caption='System User Id ( Datasources)' datatype='integer' name='[system_user_id (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='System User Id' datatype='integer' name='[system_user_id]' role='dimension' type='ordinal' />
+      <column caption='Updated At ( Datasources)' datatype='datetime' name='[updated_at (_datasources)]' role='dimension' type='ordinal' />
+      <column caption='Updated At' datatype='datetime' name='[updated_at]' role='dimension' type='ordinal' />
+      <column caption='Username' datatype='string' name='[username]' role='dimension' type='nominal' />
+      <column caption='View Count' datatype='integer' name='[view_count]' role='measure' type='quantitative' />
+      <column caption='Workbook Url' datatype='string' name='[workbook_url]' role='dimension' type='nominal' />
+      <column-instance column='[event_type]' derivation='None' name='[none:event_type:nk]' pivot='key' type='nominal' />
+      <column-instance column='[permission]' derivation='None' name='[none:permission:ok]' pivot='key' type='ordinal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.451219' measure-ordering='alphabetic' measure-percentage='0.548781' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:permission:ok]' type='palette'>
+            <map to='#59a14f'>
+              <bucket>1</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>3</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>4</bucket>
+            </map>
+          </encoding>
+          <encoding attr='shape' field='[none:event_type:nk]' type='shape'>
+            <map to='plus'>
+              <bucket>&quot;insert&quot;</bucket>
+            </map>
+            <map to='times'>
+              <bucket>&quot;delete&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Sith are fun.</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Auditing is quite exciting' name='federated.1ey3fif0fbkq9715ttp060fhark5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1ey3fif0fbkq9715ttp060fhark5'>
+            <column caption='Object Name' datatype='string' name='[Calculation_259238518193442816]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='If [authorizable_type] = &apos;Datasource&apos; Then&#13;&#10;    [name (_datasources)]&#13;&#10;ELSEIF [authorizable_type] = &apos;Workbook&apos; Then &#13;&#10;    [name]&#13;&#10;End' />
+            </column>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column caption='Authorizable Type' datatype='string' name='[authorizable_type]' role='dimension' type='nominal' />
+            <column caption='Capability' datatype='string' name='[display_name]' role='dimension' type='nominal' />
+            <column caption='Event Time' datatype='datetime' name='[event_time]' role='dimension' type='ordinal' />
+            <column caption='Event Type' datatype='string' name='[event_type]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;delete&quot;' value='Delete' />
+              </aliases>
+            </column>
+            <column caption='Name ( Datasources)' datatype='string' name='[name (_datasources)]' role='dimension' type='nominal' />
+            <column caption='Name' datatype='string' name='[name]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_259238518193442816]' derivation='None' name='[none:Calculation_259238518193442816:nk]' pivot='key' type='nominal' />
+            <column-instance column='[authorizable_type]' derivation='None' name='[none:authorizable_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[display_name]' derivation='None' name='[none:display_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[event_time]' derivation='None' name='[none:event_time:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[event_type]' derivation='None' name='[none:event_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[permission]' derivation='None' name='[none:permission:ok]' pivot='key' type='ordinal' />
+            <column aggregation='Sum' caption='Permission' datatype='integer' name='[permission]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='1' value='Grant (Group)' />
+                <alias key='3' value='Grant (User)' />
+                <alias key='4' value='Deny (User)' />
+              </aliases>
+            </column>
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1ey3fif0fbkq9715ttp060fhark5].[none:Calculation_259238518193442816:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:Calculation_259238518193442816:nk]' member='&quot;Regional&quot;' />
+              <groupfilter function='member' level='[none:Calculation_259238518193442816:nk]' member='&quot;Sample - Superstore&quot;' />
+            </groupfilter>
+          </filter>
+          <sort class='manual' column='[federated.1ey3fif0fbkq9715ttp060fhark5].[none:authorizable_type:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Workbook&quot;</bucket>
+              <bucket>&quot;Datasource&quot;</bucket>
+              <bucket>%all%</bucket>
+            </dictionary>
+          </sort>
+          <slices>
+            <column>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:Calculation_259238518193442816:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.1ey3fif0fbkq9715ttp060fhark5].[sum:Number of Records:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1ey3fif0fbkq9715ttp060fhark5].[none:permission:ok]' />
+              <shape column='[federated.1ey3fif0fbkq9715ttp060fhark5].[none:event_type:nk]' />
+              <text column='[federated.1ey3fif0fbkq9715ttp060fhark5].[sum:Number of Records:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='has-stroke' value='false' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+                <format attr='size' value='1.0214917659759521' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1ey3fif0fbkq9715ttp060fhark5].[none:authorizable_type:nk] / ([federated.1ey3fif0fbkq9715ttp060fhark5].[none:permission:ok] / [federated.1ey3fif0fbkq9715ttp060fhark5].[none:display_name:nk]))</rows>
+        <cols>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:event_time:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Sheet 3'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>More Permissions</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource name='Auditing is quite exciting (copy)' />
+          </datasources>
+          <datasource-dependencies datasource='Auditing is quite exciting (copy)'>
+            <column caption='Object Name' datatype='string' name='[Calculation_259238518193442816]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='If [authorizable_type] = &apos;Datasource&apos; Then&#13;&#10;    [name (_datasources)]&#13;&#10;ELSEIF [authorizable_type] = &apos;Workbook&apos; Then &#13;&#10;    [name]&#13;&#10;ELSEIF [authorizable_type] = &apos;Project&apos; Then&#13;&#10;    [name (_projects)]&#13;&#10;End' />
+            </column>
+            <column caption='User or Group' datatype='string' name='[Calculation_302022718176387072]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='If [grantee_type] = &quot;User&quot; Then &#13;&#10;    [friendly_name]&#13;&#10;elseif [grantee_type] = &quot;Group&quot; Then&#13;&#10;    [name (_groups)]&#13;&#10;End' />
+            </column>
+            <column caption='Authorizable Type' datatype='string' name='[authorizable_type]' role='dimension' type='nominal' />
+            <column caption='Capability' datatype='string' name='[display_name]' role='dimension' type='nominal' />
+            <column caption='Event Time' datatype='datetime' name='[event_time]' role='dimension' type='ordinal' />
+            <column caption='Event Type' datatype='string' name='[event_type]' role='dimension' type='nominal'>
+              <aliases>
+                <alias key='&quot;delete&quot;' value='Delete' />
+              </aliases>
+            </column>
+            <column caption='Friendly Name' datatype='string' name='[friendly_name]' role='dimension' type='nominal' />
+            <column caption='Grantee Type' datatype='string' name='[grantee_type]' role='dimension' type='nominal' />
+            <column caption='Name ( Datasources)' datatype='string' name='[name (_datasources)]' role='dimension' type='nominal' />
+            <column caption='Name ( Groups)' datatype='string' name='[name (_groups)]' role='dimension' type='nominal' />
+            <column caption='Name ( Projects)' datatype='string' name='[name (_projects)]' role='dimension' type='nominal' />
+            <column caption='Name' datatype='string' name='[name]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_259238518193442816]' derivation='None' name='[none:Calculation_259238518193442816:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_302022718176387072]' derivation='None' name='[none:Calculation_302022718176387072:nk]' pivot='key' type='nominal' />
+            <column-instance column='[authorizable_type]' derivation='None' name='[none:authorizable_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[display_name]' derivation='None' name='[none:display_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[event_time]' derivation='None' name='[none:event_time:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[event_type]' derivation='None' name='[none:event_type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[permission]' derivation='None' name='[none:permission:ok]' pivot='key' type='ordinal' />
+            <column aggregation='Sum' caption='Permission' datatype='integer' name='[permission]' role='dimension' type='ordinal'>
+              <aliases>
+                <alias key='1' value='Grant (Group)' />
+                <alias key='3' value='Grant (User)' />
+                <alias key='4' value='Deny (User)' />
+              </aliases>
+            </column>
+            <column-instance column='[event_time]' derivation='Day-Trunc' name='[tdy:event_time:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[Auditing is quite exciting (copy)].[none:authorizable_type:nk]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:authorizable_type:nk]' />
+              <groupfilter function='member' level='[none:authorizable_type:nk]' member='&quot;View&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='quantitative' column='[Auditing is quite exciting (copy)].[none:event_time:qk]' included-values='in-range'>
+            <min>#2016-10-02 08:00:00#</min>
+            <max>#2016-10-12 07:24:30.119#</max>
+          </filter>
+          <slices>
+            <column>[Auditing is quite exciting (copy)].[none:event_time:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='header'>
+            <format attr='width' field='[Auditing is quite exciting (copy)].[none:permission:ok]' value='92' />
+            <format attr='width' field='[Auditing is quite exciting (copy)].[none:authorizable_type:nk]' value='92' />
+            <format attr='height-header' value='33' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <encodings>
+              <color column='[Auditing is quite exciting (copy)].[none:permission:ok]' />
+              <shape column='[Auditing is quite exciting (copy)].[none:event_type:nk]' />
+              <lod column='[Auditing is quite exciting (copy)].[none:event_type:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-transparency' value='255' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([Auditing is quite exciting (copy)].[none:authorizable_type:nk] / ([Auditing is quite exciting (copy)].[none:Calculation_302022718176387072:nk] / ([Auditing is quite exciting (copy)].[none:Calculation_259238518193442816:nk] / [Auditing is quite exciting (copy)].[none:display_name:nk])))</rows>
+        <cols>[Auditing is quite exciting (copy)].[tdy:event_time:qk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='5' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='3' type='layout-basic' w='99600' x='0' y='0'>
+              <zone h='100000' id='1' name='Sheet 1' w='99600' x='0' y='0' />
+            </zone>
+          </zone>
+        </zone>
+        <zone h='7250' id='6' name='Sheet 1' pane-specification-id='0' param='[federated.1ey3fif0fbkq9715ttp060fhark5].[none:event_type:nk]' type='shape' w='14000' x='82400' y='32375' />
+        <zone h='9750' id='7' name='Sheet 1' pane-specification-id='0' param='[federated.1ey3fif0fbkq9715ttp060fhark5].[none:permission:ok]' type='color' w='14000' x='65900' y='31875' />
+      </zones>
+    </dashboard>
+    <dashboard name='Dashboard 2'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource name='Auditing is quite exciting (copy)' />
+      </datasources>
+      <datasource-dependencies datasource='Auditing is quite exciting (copy)'>
+        <column caption='Event Time' datatype='datetime' name='[event_time]' role='dimension' type='ordinal' />
+        <column-instance column='[event_time]' derivation='None' name='[none:event_time:qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='100000' id='5' param='horz' type='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='3' type='layout-basic' w='99600' x='0' y='0'>
+              <zone h='100000' id='1' name='Sheet 3' w='99600' x='0' y='0' />
+            </zone>
+          </zone>
+        </zone>
+        <zone h='5875' id='8' name='Sheet 3' pane-specification-id='0' param='[Auditing is quite exciting (copy)].[none:permission:ok]' type='color' w='47400' x='25300' y='500' />
+        <zone h='7250' id='7' name='Sheet 3' pane-specification-id='0' param='[Auditing is quite exciting (copy)].[none:event_type:nk]' type='shape' w='14000' x='59600' y='750' />
+        <zone h='6500' id='6' name='Sheet 3' param='[Auditing is quite exciting (copy)].[none:event_time:qk]' show-domain='false' show-null-ctrls='false' type='filter' w='21600' x='73400' y='1750' />
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height='51'>
+    <window class='dashboard' maximized='true' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Sheet 1'>
+          <highlight>
+            <color-one-way>
+              <field>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:permission:ok]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+      </viewpoints>
+      <active id='1' />
+    </window>
+    <window class='dashboard' name='Dashboard 2'>
+      <viewpoints>
+        <viewpoint name='Sheet 3'>
+          <highlight>
+            <color-one-way>
+              <field>[Auditing is quite exciting (copy)].[none:permission:ok]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+      </viewpoints>
+      <active id='1' />
+    </window>
+    <window class='worksheet' hidden='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1ey3fif0fbkq9715ttp060fhark5].[none:event_type:nk]' type='shape' />
+            <card pane-specification-id='0' param='[federated.1ey3fif0fbkq9715ttp060fhark5].[none:permission:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:Calculation_259238518193442816:nk]</field>
+            <field>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:authorizable_type:nk]</field>
+            <field>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:display_name:nk]</field>
+            <field>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:domain_name (_datasources):nk]</field>
+            <field>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:event_time:qk]</field>
+            <field>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:name (_datasources):nk]</field>
+            <field>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:name:nk]</field>
+            <field>[federated.1ey3fif0fbkq9715ttp060fhark5].[none:permission:ok]</field>
+            <field>[federated.1ey3fif0fbkq9715ttp060fhark5].[yr:event_time:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='188'>
+            <card param='[Auditing is quite exciting (copy)].[none:event_time:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card pane-specification-id='0' param='[Auditing is quite exciting (copy)].[none:event_type:nk]' type='shape' />
+            <card pane-specification-id='0' param='[Auditing is quite exciting (copy)].[none:permission:ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[Auditing is quite exciting (copy)].[none:Calculation_259238518193442816:nk]</field>
+            <field>[Auditing is quite exciting (copy)].[none:Calculation_302022718176387072:nk]</field>
+            <field>[Auditing is quite exciting (copy)].[none:authorizable_type:nk]</field>
+            <field>[Auditing is quite exciting (copy)].[none:display_name:nk]</field>
+            <field>[Auditing is quite exciting (copy)].[none:event_time:qk]</field>
+            <field>[Auditing is quite exciting (copy)].[none:event_type:nk]</field>
+            <field>[Auditing is quite exciting (copy)].[none:friendly_name:nk]</field>
+            <field>[Auditing is quite exciting (copy)].[none:permission:ok]</field>
+            <field>[Auditing is quite exciting (copy)].[yr:event_time:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Dashboard 1' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Dashboard 2' width='192'>
+      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
+      RK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
